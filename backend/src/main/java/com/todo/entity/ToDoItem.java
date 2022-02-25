@@ -1,16 +1,29 @@
-package com.todo;
+package com.todo.entity;
 
 import java.util.Objects;
-
+import java.util.UUID; // for database
 public class ToDoItem {
     private String name;
     private String itemType;
+    private String id;
+    private boolean status = false;
 
-    private boolean status= false;
-
-    public ToDoItem(String name , String itemType , int i) {
+    public ToDoItem() {this.id = UUID.randomUUID().toString();  // always default constructor
     }
 
+    public ToDoItem(String name, String itemType) {
+        this.name = name;
+        this.itemType = itemType;
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -34,5 +47,11 @@ public class ToDoItem {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }   //????
+
+    public String getId() {
+        return id;
     }
+
+
 }
